@@ -5,9 +5,10 @@ from PIL import Image, ImageDraw, ImageFont
 import pandas as pd
 import random
 
-y_coordinate = int(input('Y-cordinate '))
+y_coordinate = int(input('Y-cordinate , smun ke liye 260 ke aaspaas try'))
 template_name = input("template name: ")
 data_file = input('names wali file ka name: ')
+template_name+='.jpg'
 data_file +=".xlsx"
 try:
     df = pd.read_excel('data/{}'.format(data_file))
@@ -27,7 +28,8 @@ try:
         # font
         font = ImageFont.truetype("Fonts/BirdsOfParadise.ttf", 32)
         offset = 20
-        x_coordinate = int(width / 2 - font.getsize(name)[0] / 2) + offset
+        x_coordinate = int(400 - font.getsize(name)[0] / 2) 
+        print(x_coordinate)
         draw.text((x_coordinate, y_coordinate), name, (238, 33, 33), font=font)
 
         img.save("Certificates/" + str(name) + ".jpg")
